@@ -33,8 +33,11 @@ class Tree {
         console.log('left:', leftArray);
         console.log('right:', rightArray);
         
+        // create root node
+        const rootNode = new Node(middleNum);
+
         // return root
-        return middleNum
+        return rootNode
 
     }
 }
