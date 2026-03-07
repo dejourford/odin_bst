@@ -20,14 +20,22 @@ class Tree {
 
     buildTree(array) {
         // sort array
-        const sortedArray = array.sort();
+        const sortedArray = array.sort((a, b) => a - b);
+        console.log('sorted:', sortedArray)
+        
         // find middle num
         let middleNum = Math.floor(sortedArray.length / 2);
-        console.log(middleNum)
-        // slice array using middle num
-            // leftArray = array.slice(0, {middleNum - 1})
-            // rightArray = array.slice({middleNum + 1, array.length - 1})
+        
+        // create left and right array halves
+        const leftArray = sortedArray.slice(0, middleNum);
+        const rightArray = sortedArray.slice(middleNum + 1, array.length);
         // console.log leftArray and rightArray
+        console.log('left:', leftArray);
+        console.log('right:', rightArray);
+        
+        // return root
+        return middleNum
+
     }
 }
 
@@ -42,4 +50,5 @@ const prettyPrint = (node, prefix = '', isLeft = true) => {
     prettyPrint(node.left, `${prefix}${isLeft ? '    ' : '│   '}`, true);
 }
 
-const newTree = new Tree([1,3,4,6,7,8,10,13,14]);
+const newTree = new Tree([1, 3, 4, 6, 7, 8, 10, 13, 14]);
+console.log(newTree.root);
