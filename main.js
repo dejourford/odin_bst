@@ -5,8 +5,8 @@ class Node {
     constructor(data) {
 
         this.data = data;
-        this.lchild = null;
-        this.rchild = null;
+        this.left = null;
+        this.right = null;
     }
 
 }
@@ -19,54 +19,28 @@ class Tree {
     }
 
     buildTree(array) {
+
+        // if no array, then return
+        if (array.length === 0) return null;
+
+
         // sort array
-        const sortedArray = array.sort((a, b) => a - b);
-        console.log('sorted:', sortedArray)
+        let sortedArray = array.sort((a, b) => a - b);
+        
 
         // find middle num
         let middleNum = Math.floor(sortedArray.length / 2);
 
         // create root node
-        const rootNumber = sortedArray[middleNum]
-        const rootNode = new Node(rootNumber);
+        const rootNode = new Node(sortedArray[middleNum]);
 
-
-        // 1. assign root node left values
-        
-
-
-        // get lchild array [ 1, 3, 4, 6 ]
-        let leftArray = sortedArray.slice(0, middleNum);
-        console.log('left:', leftArray);
-        console.log(rootNode)
-        // while (leftArray.length !== 1) {
-        //     middleNum = Math.floor(leftArray.length / 2);
-        //     console.log('middle num is now:', middleNum)
-
-        //     leftArray = leftArray.splice(0, )
-
-        // }
-
-
-
-        // get rchild array [ 8, 10, 13, 14 ]
-        const rightArray = sortedArray.slice(middleNum + 1, array.length);
-        console.log('right:', rightArray);
-
-
-        // set middleNum to null
-        // while array.length !== 1
-        // middleNum = Math.floor(array.length / 2);
-        // console.log(middleNum)
-        
-            rootNode.lchild = 3;
-
-
-            // 2. assign root node right values
-            rootNode.rchild = 4;
+        // build subtrees
+        rootNode.left = this.buildTree(sortedArray.slice(0, middleNum));
+        rootNode.right = this.buildTree(sortedArray.slice(middleNum + 1))
 
         // return root
         return rootNode
+
 
     }
 }
@@ -83,4 +57,5 @@ const prettyPrint = (node, prefix = '', isLeft = true) => {
 }
 
 const newTree = new Tree([1, 3, 4, 6, 7, 8, 10, 13, 14]);
-console.log(newTree.root);
+
+prettyPrint(newTree.root);
