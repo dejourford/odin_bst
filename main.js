@@ -29,6 +29,33 @@ class Tree {
         // return node
         return rootNode
     }
+
+    // Write an includes(value) function that accepts a value and
+    // returns true if the given value is in the tree. 
+    // If the value isn’t in the tree, it should return false.
+    includes(value) {
+        // check for valid input
+        if (typeof value !== "number") throw new RangeError("Please enter an integer");
+
+        // define current node
+        let current = this.root;
+
+        // while loop for null node
+        while (current !== null) {
+            if (value === current.data) {
+                return true
+            }
+
+            if (value < current.data) {
+                current = current.left;
+            } else {
+                current = current.right;
+            }
+        }
+
+        // else return false 
+        return false
+    }
 }
 
 
@@ -46,5 +73,5 @@ const prettyPrint = (node, prefix = '', isLeft = true) => {
 
 const newTree = new Tree([1, 3, 4, 6, 7, 8, 10, 13, 14]);
 
-console.log(newTree.root)
+console.log(newTree.includes(14))
 prettyPrint(newTree.root);
