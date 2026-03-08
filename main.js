@@ -22,19 +22,48 @@ class Tree {
         // sort array
         const sortedArray = array.sort((a, b) => a - b);
         console.log('sorted:', sortedArray)
-        
+
         // find middle num
         let middleNum = Math.floor(sortedArray.length / 2);
-        
-        // create left and right array halves
-        const leftArray = sortedArray.slice(0, middleNum);
-        const rightArray = sortedArray.slice(middleNum + 1, array.length);
-        // console.log leftArray and rightArray
-        console.log('left:', leftArray);
-        console.log('right:', rightArray);
-        
+
         // create root node
-        const rootNode = new Node(middleNum);
+        const rootNumber = sortedArray[middleNum]
+        const rootNode = new Node(rootNumber);
+
+
+        // 1. assign root node left values
+        
+
+
+        // get lchild array [ 1, 3, 4, 6 ]
+        let leftArray = sortedArray.slice(0, middleNum);
+        console.log('left:', leftArray);
+        console.log(rootNode)
+        // while (leftArray.length !== 1) {
+        //     middleNum = Math.floor(leftArray.length / 2);
+        //     console.log('middle num is now:', middleNum)
+
+        //     leftArray = leftArray.splice(0, )
+
+        // }
+
+
+
+        // get rchild array [ 8, 10, 13, 14 ]
+        const rightArray = sortedArray.slice(middleNum + 1, array.length);
+        console.log('right:', rightArray);
+
+
+        // set middleNum to null
+        // while array.length !== 1
+        // middleNum = Math.floor(array.length / 2);
+        // console.log(middleNum)
+        
+            rootNode.lchild = 3;
+
+
+            // 2. assign root node right values
+            rootNode.rchild = 4;
 
         // return root
         return rootNode
