@@ -58,4 +58,5 @@ const prettyPrint = (node, prefix = '', isLeft = true) => {
 
 const newTree = new Tree([1, 3, 4, 6, 7, 8, 10, 13, 14]);
 
+console.log(newTree.root)
 prettyPrint(newTree.root);
