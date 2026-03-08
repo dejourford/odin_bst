@@ -1,49 +1,37 @@
-// Build a Node class/factory. 
-// It should have an attribute for the data it stores as well as its left and right children.
 class Node {
-
     constructor(data) {
-
         this.data = data;
         this.left = null;
         this.right = null;
     }
-
 }
 
-// Build a Tree class/factory which accepts an array when initialized. 
-// The Tree class should have a root attribute, which uses the return value of buildTree() which you’ll write next.
 class Tree {
     constructor(array) {
-        this.root = this.buildTree(array);
+        const sortedArray = array.sort((a, b) => a - b);
+        this.root = this.buildTree(sortedArray)
     }
 
     buildTree(array) {
-
-        // if no array, then return
+        // base case
         if (array.length === 0) return null;
 
+        // find middle index
+        const middleIndex = Math.floor(array.length / 2);
 
-        // sort array
-        let sortedArray = array.sort((a, b) => a - b);
-        
+        // use middle index to target middle number and create node
+        const rootNode = new Node(array[middleIndex]);
 
-        // find middle num
-        let middleNum = Math.floor(sortedArray.length / 2);
+        // set left and right children using buildTree()
+        rootNode.left = this.buildTree(array.slice(0, middleIndex))
+        rootNode.right = this.buildTree(array.slice(middleIndex + 1))
 
-        // create root node
-        const rootNode = new Node(sortedArray[middleNum]);
-
-        // build subtrees
-        rootNode.left = this.buildTree(sortedArray.slice(0, middleNum));
-        rootNode.right = this.buildTree(sortedArray.slice(middleNum + 1))
-
-        // return root
+        // return node
         return rootNode
-
-
     }
 }
+
+
 
 // visual function
 const prettyPrint = (node, prefix = '', isLeft = true) => {
