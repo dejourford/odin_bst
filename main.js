@@ -56,6 +56,31 @@ class Tree {
         // else return false 
         return false
     }
+
+    insert(value) {
+
+        // define current as this.root
+        let current = this.root;
+
+
+        // while current !== null
+        while (current !== null) {
+            // if value === current.data, throw error
+            if (value === current.data) throw new Error("This node already exists!")
+
+
+            // if value < current.data
+            if (value < current.data) {
+                current = current.left
+            } else {
+                current = current.right
+
+            }
+        }
+
+
+
+    }
 }
 
 
@@ -74,4 +99,5 @@ const prettyPrint = (node, prefix = '', isLeft = true) => {
 const newTree = new Tree([1, 3, 4, 6, 7, 8, 10, 13, 14]);
 
 console.log(newTree.includes(14))
+console.log(newTree.insert(8))
 prettyPrint(newTree.root);
