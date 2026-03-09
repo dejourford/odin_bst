@@ -114,4 +114,6 @@ const newTree = new Tree([1, 3, 4, 6, 7, 8, 10, 13, 14]);
 
 // console.log(newTree.includes(14))
 console.log(newTree.insert(5))
+console.log(newTree.insert(90))
+console.log(newTree.insert(24))
 prettyPrint(newTree.root);
