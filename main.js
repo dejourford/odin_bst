@@ -58,16 +58,13 @@ class Tree {
     }
 
     insert(value) {
-
         // define current as this.root
         let current = this.root;
-
 
         // while current !== null
         while (true) {
             // if value === current.data, throw error
             if (value === current.data) throw new Error("This node already exists!")
-
 
             // if value < current.data
             if (value < current.data) {
@@ -76,9 +73,7 @@ class Tree {
                     current.left = new Node(value);
                     return;
                 }
-
                 current = current.left
-
             } else {
                 if (current.right === null) {
                     current.right = new Node(value);
@@ -86,14 +81,7 @@ class Tree {
                 }
                 current = current.right;
             }
-
-
-
         }
-
-
-
-
     }
 }
 
